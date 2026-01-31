@@ -5,7 +5,7 @@ public class ToDo extends Task {
     }
 
     @Override
-    public String msg() {
+    public String toString() {
         return "[T][" + getStatusIcon() + "] " + description;
     }
 }
