@@ -11,4 +11,13 @@ public class Deadline extends Task {
     public String toString() {
         return "[D][" + getStatusIcon() + "] " + description + " (by: " + time + ")";
     }
+
+    @Override
+    public String encodeString() {
+        if (isDone) {
+            return "D/1/" + description + "/" + time;
+        } else {
+            return "D/0/" + description + "/" + time;
+        }
+    }
 }
