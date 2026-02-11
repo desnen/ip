@@ -1,20 +1,23 @@
 import java.util.*;
+import java.nio.file.*;
 
 public class Ploopy {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String line = "______________________________________";
         String gotIt = "Got it. I've added this task:";
-        System.out.println("Hello! I'm Ploopy.\nWhat can I do for you?\n" + line +
-                "\nBye. Hope to see you again soon!\n" + line);
         System.out.println(line + "\n" + "Hello! I'm Ploopy.\nWhat can I do for you?\n" + line);
         List<Task> arr = new ArrayList<>();
         int p = 0;
+        Storage str = new Storage();
+        arr = str.load();
         while (true) {
             String inp = sc.nextLine();
             int len = inp.length();
             try {
                 if (inp.equals("bye")) {
+                    str.save(arr);
                     System.out.println(line + "\n" + "Bye. Hope to see you again soon!\n" + line);
                     break;
                 } else if (inp.equals("list")){

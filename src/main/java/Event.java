@@ -14,4 +14,13 @@ public class Event extends Task {
         return "[E][" + getStatusIcon() + "] " + description
                 + " (from: " + start + " to: " + end + ")";
     }
+
+    @Override
+    public String encodeString() {
+        if (isDone) {
+            return "E/1/" + description + "/" + start + "/" + end;
+        } else {
+            return "E/0/" + description + "/" + start + "/" + end;
+        }
+    }
 }
