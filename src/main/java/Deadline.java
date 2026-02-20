@@ -1,13 +1,18 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Deadline extends Task {
 
     protected LocalDate time;
 
-    public Deadline(String description, String time) {
+    public Deadline(String description, String time) throws PloopyException {
         super(description);
-        this.time = LocalDate.parse(time);
+        try {
+            this.time = LocalDate.parse(time);
+        } catch (DateTimeParseException e) {
+            throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+        }
     }
 
     @Override

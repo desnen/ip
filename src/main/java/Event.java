@@ -1,15 +1,20 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Event extends Task {
 
     protected LocalDate start;
     protected LocalDate end;
 
-    public Event(String description, String start, String end) {
+    public Event(String description, String start, String end) throws PloopyException {
         super(description);
-        this.start = LocalDate.parse(start);
-        this.end = LocalDate.parse(end);
+        try {
+            this.start = LocalDate.parse(start);
+            this.end = LocalDate.parse(end);
+        } catch (DateTimeParseException e) {
+            throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+        }
     }
 
     @Override

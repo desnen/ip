@@ -9,15 +9,15 @@ import java.util.List;
 public class Storage {
     private final Path filePath;
 
-    public Storage() {
-        this.filePath = Paths.get("data", "ploopy.txt");
+    public Storage(String filePath) {
+        this.filePath = Path.of(filePath);
     }
 
     public String encode(Task t) {
         return t.encodeString();
     }
 
-    public Task decode(String s) {
+    public Task decode(String s) throws PloopyException{
         String[] parts = s.split("/");
 
         String type = parts[0];
@@ -45,7 +45,7 @@ public class Storage {
         return task;
     }
 
-    public List<Task> load() {
+    public List<Task> load() throws PloopyException{
         List<Task> tasks = new ArrayList<>();
 
         try {
@@ -59,12 +59,12 @@ public class Storage {
                 tasks.add(t);
             }
         } catch (IOException e) {
-            System.err.println("Failed to load tasks: " + e.getMessage());
+            throw new PloopyException("Failed to load tasks: " + e.getMessage());
         }
         return tasks;
     }
 
-    public void save(List<Task> tasks) {
+    public void save(TaskList tasks) {
         try {
             Path parent = filePath.getParent();
             if (parent != null) {
@@ -77,9 +77,15 @@ public class Storage {
                     StandardOpenOption.CREATE,
                     StandardOpenOption.TRUNCATE_EXISTING
             )) {
-                for (Task t: tasks) {
+                int curr = 0;
+                boolean isEnd = tasks.isEnd(curr);
+                Task t;
+                while(!isEnd) {
+                    t = tasks.give(curr);
                     w.write(encode(t));
                     w.newLine();
+                    curr += 1;
+                    isEnd = tasks.isEnd(curr);
                 }
             }
         } catch (IOException e) {
