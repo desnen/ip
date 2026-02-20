@@ -1,7 +1,7 @@
 package ploopy;
 
-import ploopy.task.TaskList;
 import ploopy.command.Command;
+import ploopy.task.TaskList;
 
 public class Ploopy {
 
