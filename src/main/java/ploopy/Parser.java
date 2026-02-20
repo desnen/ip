@@ -1,15 +1,15 @@
 package ploopy;
 
-import ploopy.command.Command;
-import ploopy.command.ListCommand;
-import ploopy.command.ExitCommand;
-import ploopy.command.MarkCommand;
-import ploopy.command.DeleteCommand;
 import ploopy.command.AddCommand;
-import ploopy.task.Task;
-import ploopy.task.Event;
-import ploopy.task.ToDo;
+import ploopy.command.Command;
+import ploopy.command.DeleteCommand;
+import ploopy.command.ExitCommand;
+import ploopy.command.ListCommand;
+import ploopy.command.MarkCommand;
 import ploopy.task.Deadline;
+import ploopy.task.Event;
+import ploopy.task.Task;
+import ploopy.task.ToDo;
 
 public class Parser {
 
@@ -26,8 +26,8 @@ public class Parser {
             return new ListCommand();
         } else if (fullCommand.startsWith("mark")) {
             if (len == 4) {
-                throw new PloopyException("OOPS!!! " +
-                        "The index of mark cannot be empty.");
+                throw new PloopyException("OOPS!!! "
+                        + "The index of mark cannot be empty.");
             } else {
                 try {
                     int rep = Integer.parseInt(fullCommand.substring(5)) - 1;
@@ -38,8 +38,8 @@ public class Parser {
             }
         } else if (fullCommand.startsWith("unmark")) {
             if (len == 6) {
-                throw new PloopyException("OOPS!!! " +
-                        "The index of unmark cannot be empty.");
+                throw new PloopyException("OOPS!!! "
+                        + "The index of unmark cannot be empty.");
             } else {
                 try {
                     int rep = Integer.parseInt(fullCommand.substring(7)) - 1;
@@ -50,13 +50,13 @@ public class Parser {
             }
         } else if (fullCommand.startsWith("todo")) {
             if (len == 4) {
-                throw new PloopyException("OOPS!!! " +
-                        "The description of todo cannot be empty.");
+                throw new PloopyException("OOPS!!! "
+                        + "The description of todo cannot be empty.");
             } else {
                 String w = fullCommand.substring(5, len);
                 if (w.isBlank()) {
-                    throw new PloopyException("OOPS!!! " +
-                            "The description of todo cannot be empty.");
+                    throw new PloopyException("OOPS!!! "
+                            + "The description of todo cannot be empty.");
                 } else {
                     Task curr = new ToDo(w);
                     return new AddCommand(curr);
@@ -64,8 +64,8 @@ public class Parser {
             }
         } else if (fullCommand.startsWith("deadline")) {
             if (len == 8) {
-                throw new PloopyException("OOPS!!! " +
-                        "The time of deadline cannot be empty.");
+                throw new PloopyException("OOPS!!! "
+                        + "The time of deadline cannot be empty.");
             } else {
                 try {
                     int targ = fullCommand.indexOf("/", 8);
@@ -79,8 +79,8 @@ public class Parser {
             }
         } else if (fullCommand.startsWith("event")) {
             if (len == 5) {
-                throw new PloopyException("OOPS!!! " +
-                        "The time of event cannot be empty.");
+                throw new PloopyException("OOPS!!! "
+                        + "The time of event cannot be empty.");
             } else {
                 try {
                     int targ = fullCommand.indexOf("/", 5);
@@ -96,8 +96,8 @@ public class Parser {
             }
         } else if (fullCommand.startsWith("delete")) {
             if (len == 6) {
-                throw new PloopyException("OOPS!!! " +
-                        "The index of delete cannot be empty.");
+                throw new PloopyException("OOPS!!! "
+                        + "The index of delete cannot be empty.");
             } else {
                 try {
                     int ny = Integer.parseInt(fullCommand.substring(7, len));

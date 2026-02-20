@@ -19,7 +19,7 @@ public class TaskList {
     }
 
     public void list() {
-        String op = LINE + "\n" + "Here are the tasks in your list:";
+        String op = "Here are the tasks in your list:";
         for (int i = 0; i < tasks.size(); i++) {
             op += "\n" + (i + 1) + "." + tasks.get(i);
         }
@@ -50,11 +50,15 @@ public class TaskList {
         try {
             tasks.get(index).mark(isMark);
         } catch (IndexOutOfBoundsException e) {
-            throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+            throw new PloopyException("OOPS!!! Index is out of bounds!");
         }
     }
 
-    public void delete(int index) {
-        tasks.remove(index);
+    public void delete(int index) throws PloopyException {
+        try {
+            tasks.remove(index - 1);
+        } catch (IndexOutOfBoundsException e) {
+            throw new PloopyException("OOPS!!! Index is out of bounds!");
+        }
     }
 }

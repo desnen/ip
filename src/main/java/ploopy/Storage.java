@@ -1,17 +1,20 @@
 package ploopy;
 
-import ploopy.task.Event;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
-import ploopy.task.Task;
-import ploopy.task.ToDo;
+
 import ploopy.task.Deadline;
+import ploopy.task.Event;
+import ploopy.task.Task;
 import ploopy.task.TaskList;
+import ploopy.task.ToDo;
+
 
 
 public class Storage {
@@ -34,17 +37,17 @@ public class Storage {
         Task task;
 
         switch (type) {
-            case "T":
-                task = new ToDo(parts[2]);
-                break;
-            case "D":
-                task = new Deadline(parts[2], parts[3]);
-                break;
-            case "E":
-                task = new Event(parts[2], parts[3], parts[4]);
-                break;
-            default:
-                return null;
+        case "T":
+            task = new ToDo(parts[2]);
+            break;
+        case "D":
+            task = new Deadline(parts[2], parts[3]);
+            break;
+        case "E":
+            task = new Event(parts[2], parts[3], parts[4]);
+            break;
+        default:
+            return null;
         }
 
         if (isDone.equals("1")) {
@@ -79,7 +82,7 @@ public class Storage {
                 Files.createDirectories(parent);
             }
 
-            try(BufferedWriter w = Files.newBufferedWriter(
+            try (BufferedWriter w = Files.newBufferedWriter(
                     filePath,
                     StandardCharsets.UTF_8,
                     StandardOpenOption.CREATE,
@@ -88,7 +91,7 @@ public class Storage {
                 int curr = 0;
                 boolean isEnd = tasks.isEnd(curr);
                 Task t;
-                while(!isEnd) {
+                while (!isEnd) {
                     t = tasks.give(curr);
                     w.write(encode(t));
                     w.newLine();
