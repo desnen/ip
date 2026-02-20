@@ -1,6 +1,9 @@
+package ploopy.task;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import ploopy.PloopyException;
 
 public class Event extends Task {
 

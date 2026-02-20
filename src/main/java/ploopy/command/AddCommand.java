@@ -1,3 +1,10 @@
+package ploopy.command;
+
+import ploopy.task.Task;
+import ploopy.task.TaskList;
+import ploopy.Ui;
+import ploopy.Storage;
+
 public class AddCommand extends Command{
 
     public AddCommand(Task task) {

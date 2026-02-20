@@ -1,10 +1,13 @@
+package ploopy;
+
 import java.util.Scanner;
+import ploopy.task.Task;
 
 public class Ui {
 
     public final static String LINE = "______________________________________";
 
-    public final static String gotIt = "Got it. I've added this task:";
+    public final static String gotIt = "Got it. I've added this ploopy.task:";
 
     Scanner sc;
 
@@ -31,10 +34,10 @@ public class Ui {
 
     public void showMark(boolean isMark, Task t) {
         if (isMark) {
-            System.out.println("\n" + "Nice! I've marked this task as done:" +
+            System.out.println("\n" + "Nice! I've marked this ploopy.task as done:" +
                     "\n" + t);
         } else {
-            System.out.println("\n" + "Ok, I've marked this task as not done yet:" +
+            System.out.println("\n" + "Ok, I've marked this ploopy.task as not done yet:" +
                     "\n" + t);
         }
     }
@@ -51,7 +54,7 @@ public class Ui {
     }
 
     public void showDelete(int index, Task t, int size) {
-        System.out.println("\n" + "Noted. I've removed this task:\n" + t + "\nNow you have "
+        System.out.println("\n" + "Noted. I've removed this ploopy.task:\n" + t + "\nNow you have "
                 + size + " tasks in you list.");
     }
 }

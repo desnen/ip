@@ -1,3 +1,8 @@
+package ploopy;
+
+import ploopy.task.TaskList;
+import ploopy.command.Command;
+
 public class Ploopy {
 
     private Storage storage;

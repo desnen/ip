@@ -1,10 +1,18 @@
+package ploopy;
+
+import ploopy.task.Event;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+import ploopy.task.Task;
+import ploopy.task.ToDo;
+import ploopy.task.Deadline;
+import ploopy.task.TaskList;
+
 
 public class Storage {
     private final Path filePath;
@@ -17,7 +25,7 @@ public class Storage {
         return t.encodeString();
     }
 
-    public Task decode(String s) throws PloopyException{
+    public Task decode(String s) throws PloopyException {
         String[] parts = s.split("/");
 
         String type = parts[0];
@@ -45,7 +53,7 @@ public class Storage {
         return task;
     }
 
-    public List<Task> load() throws PloopyException{
+    public List<Task> load() throws PloopyException {
         List<Task> tasks = new ArrayList<>();
 
         try {

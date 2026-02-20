@@ -1,3 +1,10 @@
+package ploopy.command;
+
+import ploopy.task.Task;
+import ploopy.task.TaskList;
+import ploopy.Ui;
+import ploopy.Storage;
+
 public class DeleteCommand extends Command{
 
     int index;

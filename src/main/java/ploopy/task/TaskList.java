@@ -1,5 +1,8 @@
+package ploopy.task;
+
 import java.util.List;
 import java.util.ArrayList;
+import ploopy.PloopyException;
 
 public class TaskList {
 
