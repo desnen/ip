@@ -53,6 +53,22 @@ public class TaskList {
             throw new PloopyException("OOPS!!! Index is out of bounds!");
         }
     }
+    /**
+     * Prints all tasks with matching keyword in their description.
+     */
+    public void find(String keyword) {
+        StringBuilder op = new StringBuilder("Here are the matching tasks in your list:");
+        Task curr;
+        int count = 1;
+        for (int i = 0; i < tasks.size(); i++) {
+            curr = tasks.get(i);
+            if (curr.description.contains(keyword)) {
+                op.append("\n").append(count).append(".").append(curr);
+                count += 1;
+            }
+        }
+        System.out.println(op);
+    }
 
     public void delete(int index) throws PloopyException {
         try {
