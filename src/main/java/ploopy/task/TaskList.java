@@ -94,8 +94,8 @@ public class TaskList {
         StringBuilder op = new StringBuilder("Here are the matching tasks in your list:");
         Task curr;
         int count = 1;
-        for (int i = 0; i < tasks.size(); i++) {
-            curr = tasks.get(i);
+        for (Task task : tasks) {
+            curr = task;
             if (curr.description.contains(keyword)) {
                 op.append("\n").append(count).append(".").append(curr);
                 count += 1;

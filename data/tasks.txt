@@ -4,3 +4,4 @@ D/0/return book/2019-12-09
 E/1/midterms/2026-03-01/2026-03-14
 T/1/ctf
 T/0/poker
+D/0/cs2103T/2026-02-23

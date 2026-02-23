@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private Ploopy ploopy = new Ploopy();
+    private final Ploopy ploopy = new Ploopy();
 
     @Override
     public void start(Stage stage) {
