@@ -13,7 +13,7 @@ public class Task {
         return (isDone ? "X" : " "); // mark done task with X
     }
 
-    public void mark(boolean x){
+    public void mark(boolean x) {
         isDone = x;
     }
 

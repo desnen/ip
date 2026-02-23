@@ -1,24 +1,19 @@
 package ploopy.command;
 
+import ploopy.PloopyException;
+import ploopy.Storage;
+import ploopy.Ui;
 import ploopy.task.Task;
 import ploopy.task.TaskList;
-import ploopy.Ui;
-import ploopy.Storage;
-import ploopy.PloopyException;
 
 public abstract class Command {
+    protected Task task;
 
-    public Task task;
-
-    public final static String LINE = "______________________________________";
-
-    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException;
-
-    public abstract boolean isExit();
-
-    public Command(){};
+    public Command() {}
 
     public Command(Task task) {
         this.task = task;
     }
+    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException;
+    public abstract boolean isExit();
 }

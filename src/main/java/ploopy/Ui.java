@@ -10,7 +10,7 @@ public class Ui {
 
     public static final String GOTIT = "Got it. I've added this task:";
 
-    private Scanner sc;
+    private final Scanner sc;
 
     public Ui() {
         sc = new Scanner(System.in);
@@ -54,7 +54,7 @@ public class Ui {
         return sc.nextLine();
     }
 
-    public void showDelete(int index, Task t, int size) {
+    public void showDelete(Task t, int size) {
         System.out.println("Noted. I've removed this task:\n" + t + "\nNow you have "
                 + size + " tasks in you list.");
     }

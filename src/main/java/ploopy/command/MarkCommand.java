@@ -1,15 +1,15 @@
 package ploopy.command;
 
+import ploopy.PloopyException;
+import ploopy.Storage;
+import ploopy.Ui;
 import ploopy.task.Task;
 import ploopy.task.TaskList;
-import ploopy.Ui;
-import ploopy.Storage;
-import ploopy.PloopyException;
 
-public class MarkCommand extends Command{
+public class MarkCommand extends Command {
 
-    boolean isMark;
-    int index;
+    private final boolean isMark;
+    private final int index;
 
     public MarkCommand(boolean isMark, int index) {
         this.isMark = isMark;

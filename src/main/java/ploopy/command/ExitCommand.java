@@ -1,12 +1,12 @@
 package ploopy.command;
 
-import ploopy.task.TaskList;
-import ploopy.Ui;
 import ploopy.Storage;
+import ploopy.Ui;
+import ploopy.task.TaskList;
 
-public class ExitCommand extends Command{
+public class ExitCommand extends Command {
 
-    public ExitCommand(){}
+    public ExitCommand() {}
 
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
@@ -17,5 +17,5 @@ public class ExitCommand extends Command{
     @Override
     public boolean isExit() {
         return true;
-    };
+    }
 }

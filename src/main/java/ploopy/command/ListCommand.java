@@ -1,10 +1,10 @@
 package ploopy.command;
 
-import ploopy.task.TaskList;
-import ploopy.Ui;
 import ploopy.Storage;
+import ploopy.Ui;
+import ploopy.task.TaskList;
 
-public class ListCommand extends Command{
+public class ListCommand extends Command {
 
     public ListCommand() {}
 

@@ -5,9 +5,9 @@ import ploopy.task.TaskList;
 
 public class Ploopy {
 
-    private Storage storage;
+    private final Storage storage;
     private TaskList tasks;
-    private Ui ui;
+    private final Ui ui;
 
     public Ploopy(String filePath) {
         ui = new Ui();
