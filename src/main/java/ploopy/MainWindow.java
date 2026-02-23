@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 /**
  * Controller for the main GUI.
  */
@@ -30,13 +31,13 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the ploopy instance */
+    /** Injects the Ploopy instance */
     public void setPloopy(Ploopy p) {
         ploopy = p;
     }
 
     /**
-     * Creates two dialog boxes, one echoing user input and the other containing ploopy's reply and then appends them to
+     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      */
     @FXML
@@ -50,4 +51,3 @@ public class MainWindow extends AnchorPane {
         userInput.clear();
     }
 }
-

@@ -77,6 +77,12 @@ public class Ploopy {
      * Generates a response for the user's chat message.
      */
     public String getResponse(String input) {
-        return input;
+        try {
+            Command c = Parser.parse(input);
+            String output = c.execute(tasks, ui, storage);
+            return ui.showLine() + "\n" + output;
+        } catch (PloopyException e) {
+            return "OOPS!!! I'm sorry, but I don't know what that means :-(";
+        }
     }
 }

@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * A GUI for Duke using FXML.
+ * A GUI for Ploopy using FXML.
  */
 public class Main extends Application {
 
@@ -23,6 +23,7 @@ public class Main extends Application {
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setPloopy(ploopy);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
