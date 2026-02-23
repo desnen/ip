@@ -20,7 +20,7 @@ public class Ui {
      */
     public static final String GOTIT = "Got it. I've added this task:";
 
-    private Scanner sc;
+    private final Scanner sc;
 
     /**
      * Constructs a Ui instance that reads user input from standard input.
@@ -108,11 +108,10 @@ public class Ui {
      * Prints a message indicating that a task has been successfully deleted.
      * Displays the deleted task and the updated total number of tasks.
      *
-     * @param index The index of the task that was deleted.
      * @param t The task that was deleted.
      * @param size The updated total number of tasks in the list.
      */
-    public void showDelete(int index, Task t, int size) {
+    public void showDelete(Task t, int size) {
         System.out.println("Noted. I've removed this task:\n" + t + "\nNow you have "
                 + size + " tasks in you list.");
     }

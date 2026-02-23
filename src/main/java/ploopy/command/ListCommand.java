@@ -1,14 +1,13 @@
 package ploopy.command;
 
-import ploopy.PloopyException;
-import ploopy.task.TaskList;
-import ploopy.Ui;
 import ploopy.Storage;
+import ploopy.Ui;
+import ploopy.task.TaskList;
 
 /**
  * Lists all tasks in the task list.
  */
-public class ListCommand extends Command{
+public class ListCommand extends Command {
 
     public ListCommand() {}
 

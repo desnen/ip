@@ -32,7 +32,7 @@ public class Task {
      *
      * @param x True to mark the task as done, false otherwise.
      */
-    public void mark(boolean x){
+    public void mark(boolean x) {
         isDone = x;
     }
 

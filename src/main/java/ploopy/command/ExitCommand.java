@@ -1,17 +1,16 @@
 package ploopy.command;
 
-import ploopy.PloopyException;
-import ploopy.task.TaskList;
-import ploopy.Ui;
 import ploopy.Storage;
+import ploopy.Ui;
+import ploopy.task.TaskList;
 
 /**
  * Exits the application.
  * Saves tasks to storage and displays a goodbye message to the user.
  */
-public class ExitCommand extends Command{
+public class ExitCommand extends Command {
 
-    public ExitCommand(){}
+    public ExitCommand() {}
 
     /**
      * Saves tasks in TaskList to file and displays exit message.
@@ -29,5 +28,5 @@ public class ExitCommand extends Command{
     @Override
     public boolean isExit() {
         return true;
-    };
+    }
 }

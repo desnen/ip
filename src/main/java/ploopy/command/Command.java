@@ -1,23 +1,22 @@
 package ploopy.command;
 
+import ploopy.PloopyException;
+import ploopy.Storage;
+import ploopy.Ui;
 import ploopy.task.Task;
 import ploopy.task.TaskList;
-import ploopy.Ui;
-import ploopy.Storage;
-import ploopy.PloopyException;
 
 /**
  * Represents an executable user command.
  * Defines the common interface for commands.
  */
 public abstract class Command {
+    protected Task task;
 
-    public Task task;
-
-    /**
-     * The separator line printed between command outputs.
-     */
-    public final static String LINE = "______________________________________";
+    public Command() {}
+    public Command(Task task) {
+        this.task = task;
+    }
 
     /**
      * Executes the command using the given task list, UI, and storage.
@@ -33,10 +32,4 @@ public abstract class Command {
      * Returns whether this command is exit command.
      */
     public abstract boolean isExit();
-
-    public Command(){};
-
-    public Command(Task task) {
-        this.task = task;
-    }
 }

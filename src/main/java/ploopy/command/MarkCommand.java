@@ -1,20 +1,26 @@
 package ploopy.command;
 
+import ploopy.PloopyException;
+import ploopy.Storage;
+import ploopy.Ui;
 import ploopy.task.Task;
 import ploopy.task.TaskList;
-import ploopy.Ui;
-import ploopy.Storage;
-import ploopy.PloopyException;
 
 /**
  * Marks or unmarks a task in the task list.
  * Updates the UI to confirm the task's completion status.
  */
-public class MarkCommand extends Command{
+public class MarkCommand extends Command {
 
-    boolean isMark;
-    int index;
+    private final boolean isMark;
+    private final int index;
 
+    /**
+     * Constructs a MarkCommand with the specified marking operation and target index.
+     *
+     * @param isMark True to mark the task as done, false to unmark it.
+     * @param index The zero-based index of the task to update.
+     */
     public MarkCommand(boolean isMark, int index) {
         this.isMark = isMark;
         this.index = index;

@@ -1,7 +1,8 @@
 package ploopy.task;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
 import ploopy.PloopyException;
 
 /**
@@ -9,10 +10,7 @@ import ploopy.PloopyException;
  * Provides operations for listing, adding, marking, and deleting tasks.
  */
 public class TaskList {
-
-    private List<Task> tasks;
-
-    public final static String LINE = "______________________________________";
+    private final List<Task> tasks;
 
     public TaskList() {
         this.tasks = new ArrayList<>();
@@ -26,9 +24,9 @@ public class TaskList {
      * Prints all tasks currently stored in the list.
      */
     public void list() {
-        String op = "Here are the tasks in your list:";
+        StringBuilder op = new StringBuilder("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
-            op += "\n" + (i + 1) + "." + tasks.get(i);
+            op.append("\n").append(i + 1).append(".").append(tasks.get(i));
         }
         System.out.println(op);
     }

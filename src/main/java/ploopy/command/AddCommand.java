@@ -1,14 +1,16 @@
 package ploopy.command;
 
+import ploopy.Storage;
+import ploopy.Ui;
 import ploopy.task.Task;
 import ploopy.task.TaskList;
-import ploopy.Ui;
-import ploopy.Storage;
+
+
 
 /**
  * Adds a task to the task list.
  */
-public class AddCommand extends Command{
+public class AddCommand extends Command {
 
     public AddCommand(Task task) {
         super(task);
