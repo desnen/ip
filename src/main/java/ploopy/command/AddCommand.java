@@ -12,8 +12,13 @@ import ploopy.task.TaskList;
  */
 public class AddCommand extends Command {
 
+    /**
+     * Constructor for AddCommand.
+     * @param task the task to be added to TaskList.
+     */
     public AddCommand(Task task) {
         super(task);
+        assert task != null;
     }
 
     /**

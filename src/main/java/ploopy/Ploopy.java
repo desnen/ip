@@ -79,6 +79,7 @@ public class Ploopy {
     public String getResponse(String input) {
         try {
             Command c = Parser.parse(input);
+            assert c != null;
             String output = c.execute(tasks, ui, storage);
             return ui.showLine() + "\n" + output;
         } catch (PloopyException e) {

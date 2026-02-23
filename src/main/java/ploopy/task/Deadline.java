@@ -23,6 +23,7 @@ public class Deadline extends Task {
     public Deadline(String description, String time) throws PloopyException {
         super(description);
         try {
+            assert time != null;
             this.time = LocalDate.parse(time);
         } catch (DateTimeParseException e) {
             throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");

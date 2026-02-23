@@ -9,8 +9,13 @@ import ploopy.task.TaskList;
  */
 public class FindCommand extends Command {
     private final String keyword;
+    /**
+     * Constructor for FindCommand.
+     * @param keyword the keyword that to be searched for.
+     */
     public FindCommand(String keyword) {
         this.keyword = keyword;
+        assert keyword != null;
     }
 
     /**

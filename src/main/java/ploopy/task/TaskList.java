@@ -91,6 +91,7 @@ public class TaskList {
      * Returns a string with all tasks with matching keyword in their description.
      */
     public String find(String keyword) {
+        assert keyword != null;
         StringBuilder op = new StringBuilder("Here are the matching tasks in your list:");
         Task curr;
         int count = 1;
