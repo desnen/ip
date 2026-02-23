@@ -3,6 +3,11 @@ package ploopy;
 import ploopy.command.Command;
 import ploopy.task.TaskList;
 
+/**
+ * Represents the main Ploopy chatbot application.
+ * Coordinates the UI, task list, and storage components to read, parse, and execute user commands
+ * until an exit command is issued.
+ */
 public class Ploopy {
 
     private final Storage storage;
