@@ -30,69 +30,69 @@ public class Ui {
     }
 
     /**
-     * Prints the welcome message shown when the chatbot starts.
+     * Returns the welcome message shown when the chatbot starts.
      */
-    public void showWelcome() {
-        System.out.println("Hello! I'm Ploopy.\nWhat can I do for you?\n" + LINE);
+    public String showWelcome() {
+        return "Hello! I'm Ploopy.\nWhat can I do for you?\n" + LINE;
     }
 
     /**
-     * Prints the goodbye message shown when the chatbot ends.
+     * Returns the goodbye message shown when the chatbot ends.
      */
-    public void showBye() {
-        System.out.println("Bye. Hope to see you again soon!");
+    public String showBye() {
+        return "Bye. Hope to see you again soon!";
     }
 
     /**
-     * Prints the separator line.
+     * Returns the separator line.
      */
-    public void showLine() {
-        System.out.println(LINE);
+    public String showLine() {
+        return LINE;
     }
 
     /**
-     * Prints a message indicating that a task has been successfully added.
+     * Returns the string indicating that a task has been successfully added.
      * Displays the added task and the updated total number of tasks.
      *
      * @param t The task that was added.
      * @param s The updated total number of tasks in the list.
      */
-    public void showAddTask(Task t, int s) {
-        System.out.println(GOTIT + "\n" + t + "\n"
-                + "Now you have " + s + " tasks in the list.");
+    public String showAddTask(Task t, int s) {
+        return GOTIT + "\n" + t + "\n"
+                + "Now you have " + s + " tasks in the list.";
     }
 
     /**
-     * Prints a message indicating that a task's completion status has successfully changed.
+     * Returns a string indicating that a task's completion status has successfully changed.
      * Displays the task after it has been marked or unmarked.
      *
      * @param isMark True if the task is being marked as done, false if it is being unmarked.
      * @param t The task whose completion status was updated.
      */
-    public void showMark(boolean isMark, Task t) {
+    public String showMark(boolean isMark, Task t) {
         if (isMark) {
-            System.out.println("Nice! I've marked this task as done:"
-                    + "\n" + t);
+            return "Nice! I've marked this task as done:"
+                    + "\n" + t;
         } else {
-            System.out.println("Ok, I've marked this task as not done yet:"
-                    + "\n" + t);
+            return "Ok, I've marked this task as not done yet:"
+                    + "\n" + t;
         }
     }
 
     /**
-     * Prints the given error message to the user.
+     * Returns the given error message to the user.
      *
      * @param s The error message to display.
      */
-    public void showError(String s) {
-        System.out.println(s);
+    public String showError(String s) {
+        return s;
     }
 
     /**
-     * Prints an error message indicating that stored tasks could not be loaded.
+     * Returns an error message indicating that stored tasks could not be loaded.
      */
-    public void showLoadingError() {
-        System.out.println("Failed to load tasks");
+    public String showLoadingError() {
+        return "Failed to load tasks";
     }
 
     /**
@@ -105,14 +105,14 @@ public class Ui {
     }
 
     /**
-     * Prints a message indicating that a task has been successfully deleted.
-     * Displays the deleted task and the updated total number of tasks.
+     * Returns a string indicating that a task has been successfully deleted.
+     * Returns the deleted task and the updated total number of tasks.
      *
      * @param t The task that was deleted.
      * @param size The updated total number of tasks in the list.
      */
-    public void showDelete(Task t, int size) {
-        System.out.println("Noted. I've removed this task:\n" + t + "\nNow you have "
-                + size + " tasks in you list.");
+    public String showDelete(Task t, int size) {
+        return "Noted. I've removed this task:\n" + t + "\nNow you have "
+                + size + " tasks in you list.";
     }
 }

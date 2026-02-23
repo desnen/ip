@@ -26,7 +26,7 @@ public abstract class Command {
      * @param storage The storage used for saving tasks.
      * @throws PloopyException If an error occurs while executing the command.
      */
-    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException;
+    public abstract String execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException;
 
     /**
      * Returns whether this command is exit command.

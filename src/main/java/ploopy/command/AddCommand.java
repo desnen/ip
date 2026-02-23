@@ -24,9 +24,9 @@ public class AddCommand extends Command {
      * @param storage The storage used for persistence operations.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         tasks.addTask(task);
-        ui.showAddTask(task, tasks.getSize());
+        return ui.showAddTask(task, tasks.getSize());
     }
 
     @Override
