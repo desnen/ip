@@ -36,10 +36,10 @@ public class MarkCommand extends Command {
      * @throws PloopyException If error occurs during execution of command.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException {
         tasks.mark(isMark, index);
         Task t = tasks.give(index);
-        ui.showMark(isMark, t);
+        return ui.showMark(isMark, t);
     }
 
     @Override

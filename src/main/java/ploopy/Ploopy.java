@@ -77,12 +77,6 @@ public class Ploopy {
      * Generates a response for the user's chat message.
      */
     public String getResponse(String input) {
-        try {
-            Command c = Parser.parse(input);
-            c.execute(tasks, ui, storage);
-            return "Ploopy heard: " + input;
-        } catch (PloopyException e) {
-            return "OOPS!!! I'm sorry, but I don't know what that means :-(";
-        }
+        return input;
     }
 }

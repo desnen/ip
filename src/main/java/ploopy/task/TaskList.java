@@ -21,14 +21,14 @@ public class TaskList {
     }
 
     /**
-     * Prints all tasks currently stored in the list.
+     * Returns a string with all tasks currently stored in the list.
      */
-    public void list() {
+    public String list() {
         StringBuilder op = new StringBuilder("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
             op.append("\n").append(i + 1).append(".").append(tasks.get(i));
         }
-        System.out.println(op);
+        return op.toString();
     }
 
     /**
@@ -88,9 +88,9 @@ public class TaskList {
         }
     }
     /**
-     * Prints all tasks with matching keyword in their description.
+     * Returns a string with all tasks with matching keyword in their description.
      */
-    public void find(String keyword) {
+    public String find(String keyword) {
         StringBuilder op = new StringBuilder("Here are the matching tasks in your list:");
         Task curr;
         int count = 1;
@@ -101,7 +101,7 @@ public class TaskList {
                 count += 1;
             }
         }
-        System.out.println(op);
+        return op.toString();
     }
 
     /**

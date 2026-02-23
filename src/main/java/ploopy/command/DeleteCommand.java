@@ -27,10 +27,10 @@ public class DeleteCommand extends Command {
      * @throws PloopyException If an error occurs while executing the command.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException {
         Task t = tasks.give(index - 1);
         tasks.delete(index);
-        ui.showDelete(t, tasks.getSize());
+        return ui.showDelete(t, tasks.getSize());
     }
 
     @Override
