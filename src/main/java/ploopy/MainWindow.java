@@ -56,6 +56,8 @@ public class MainWindow extends AnchorPane {
         );
         userInput.clear();
 
+
+        //Prompted ChatGPT to tell me how to cue the termination of the program with the command "bye"
         if (input.trim().equalsIgnoreCase("bye")) {
             PauseTransition pause = new PauseTransition(Duration.seconds(0.6));
             pause.setOnFinished(event -> Platform.exit());
