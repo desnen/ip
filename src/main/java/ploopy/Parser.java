@@ -4,6 +4,7 @@ import ploopy.command.AddCommand;
 import ploopy.command.Command;
 import ploopy.command.DeleteCommand;
 import ploopy.command.ExitCommand;
+import ploopy.command.FindCommand;
 import ploopy.command.ListCommand;
 import ploopy.command.MarkCommand;
 import ploopy.task.Deadline;
@@ -55,6 +56,23 @@ public class Parser {
                 try {
                     int rep = Integer.parseInt(fullCommand.substring(7)) - 1;
                     return new MarkCommand(false, rep);
+                } catch (NumberFormatException e) {
+                    throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+                }
+            }
+        } else if (fullCommand.startsWith("find")) {
+            if (len == 4) {
+                throw new PloopyException("OOPS!!! "
+                        + "The index of find cannot be empty.");
+            } else {
+                try {
+                    String keyword = fullCommand.substring(5);
+                    if (keyword.isBlank()) {
+                        throw new PloopyException("OOPS!!! "
+                                + "The index of find cannot be empty.");
+                    } else {
+                        return new FindCommand(keyword);
+                    }
                 } catch (NumberFormatException e) {
                     throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
