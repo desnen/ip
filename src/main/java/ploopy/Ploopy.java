@@ -82,7 +82,7 @@ public class Ploopy {
             String output = c.execute(tasks, ui, storage);
             return ui.showLine() + "\n" + output;
         } catch (PloopyException e) {
-            return "OOPS!!! I'm sorry, but I don't know what that means :-(";
+            return ui.showError(e.getMessage());
         }
     }
 }

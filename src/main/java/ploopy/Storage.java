@@ -53,21 +53,12 @@ public class Storage {
             String type = parts[0];
             String isDone = parts[1];
 
-            Task task;
-
-            switch (type) {
-            case "T":
-                task = new ToDo(parts[2]);
-                break;
-            case "D":
-                task = new Deadline(parts[2], parts[3]);
-                break;
-            case "E":
-                task = new Event(parts[2], parts[3], parts[4]);
-                break;
-            default:
-                throw new PloopyException("Unknown task type: " + type);
-            }
+            Task task = switch (type) {
+            case "T" -> new ToDo(parts[2]);
+            case "D" -> new Deadline(parts[2], parts[3]);
+            case "E" -> new Event(parts[2], parts[3], parts[4]);
+            default -> throw new PloopyException("Unknown task type: " + type);
+            };
 
             if (isDone.equals("1")) {
                 task.mark(true);
