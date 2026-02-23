@@ -6,10 +6,20 @@ import java.time.format.DateTimeParseException;
 
 import ploopy.PloopyException;
 
+/**
+ * Represents a task that must be completed before a specific date.
+ */
 public class Deadline extends Task {
 
     protected LocalDate time;
 
+    /**
+     * Constructs a Deadline task with the specified description and date.
+     *
+     * @param description The description of the deadline task.
+     * @param time The deadline date in ISO-8601 format.
+     * @throws PloopyException If the date format is invalid.
+     */
     public Deadline(String description, String time) throws PloopyException {
         super(description);
         try {

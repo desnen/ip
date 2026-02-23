@@ -5,11 +5,22 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import ploopy.PloopyException;
 
+/**
+ * Represents an event task with a start and end date.
+ */
 public class Event extends Task {
 
     protected LocalDate start;
     protected LocalDate end;
 
+    /**
+     * Constructs an Event task with the specified description and date range.
+     *
+     * @param description The description of the event task.
+     * @param start The start date in ISO-8601 format.
+     * @param end The end date in ISO-8601 format.
+     * @throws PloopyException If either date format is invalid.
+     */
     public Event(String description, String start, String end) throws PloopyException {
         super(description);
         try {

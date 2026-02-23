@@ -11,11 +11,22 @@ import ploopy.task.Event;
 import ploopy.task.Task;
 import ploopy.task.ToDo;
 
+/**
+ * Parses user input strings and returns executable command objects.
+ */
 public class Parser {
 
     public Parser() {
     }
 
+    /**
+     * Returns the command object represented by the given full command string.
+     * Throws an exception if the command is unknown or its arguments are invalid.
+     *
+     * @param fullCommand The user input string.
+     * @return The command object corresponding to the input string.
+     * @throws PloopyException If the input command is unknown or cannot be parsed.
+     */
     public static Command parse(String fullCommand) throws PloopyException {
 
         int len = fullCommand.length();

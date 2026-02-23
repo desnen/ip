@@ -6,14 +6,32 @@ import ploopy.Ui;
 import ploopy.Storage;
 import ploopy.PloopyException;
 
+/**
+ * Represents an executable user command.
+ * Defines the common interface for commands.
+ */
 public abstract class Command {
 
     public Task task;
 
+    /**
+     * The separator line printed between command outputs.
+     */
     public final static String LINE = "______________________________________";
 
+    /**
+     * Executes the command using the given task list, UI, and storage.
+     *
+     * @param tasks The task list to operate on.
+     * @param ui The UI used to display messages.
+     * @param storage The storage used for saving tasks.
+     * @throws PloopyException If an error occurs while executing the command.
+     */
     public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException;
 
+    /**
+     * Returns whether this command is exit command.
+     */
     public abstract boolean isExit();
 
     public Command(){};
