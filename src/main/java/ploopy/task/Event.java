@@ -3,6 +3,7 @@ package ploopy.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Objects;
 
 import ploopy.PloopyException;
 
@@ -46,5 +47,25 @@ public class Event extends Task {
         } else {
             return "E/0/" + description + "/" + start + "/" + end;
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (obj instanceof Event e) {
+            return description.equals(e.description) && start.equals(e.start)
+                    && end.equals((e.end));
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(description, start, end);
     }
 }

@@ -60,7 +60,12 @@ public class TaskList {
      *
      * @param t The task to add.
      */
-    public void addTask(Task t) {
+    public void addTask(Task t) throws PloopyException {
+        for (Task k : tasks) {
+            if (k.equals(t)) {
+                throw new PloopyException("Identical task already exists");
+            }
+        }
         tasks.add(t);
     }
 

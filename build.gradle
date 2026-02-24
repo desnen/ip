@@ -54,7 +54,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "ploopy.jar"
+    archiveBaseName = "ploopy"
     archiveClassifier = null
 }
 
