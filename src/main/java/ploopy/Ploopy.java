@@ -80,7 +80,7 @@ public class Ploopy {
         try {
             Command c = Parser.parse(input);
             String output = c.execute(tasks, ui, storage);
-            return ui.showLine() + "\n" + output;
+            return output;
         } catch (PloopyException e) {
             return ui.showError(e.getMessage());
         }

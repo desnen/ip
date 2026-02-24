@@ -33,7 +33,7 @@ public class Ui {
      * Returns the welcome message shown when the chatbot starts.
      */
     public String showWelcome() {
-        return "Hello! I'm Ploopy.\nWhat can I do for you?\n" + LINE;
+        return "Hello! I'm Ploopy.\nWhat can I do for you?";
     }
 
     /**
