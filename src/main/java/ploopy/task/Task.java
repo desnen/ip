@@ -1,5 +1,6 @@
 package ploopy.task;
 
+import java.util.Objects;
 /**
  * Represents a generic task with a description and completion status.
  */

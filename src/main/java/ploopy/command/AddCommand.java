@@ -1,5 +1,6 @@
 package ploopy.command;
 
+import ploopy.PloopyException;
 import ploopy.Storage;
 import ploopy.Ui;
 import ploopy.task.Task;
@@ -24,7 +25,7 @@ public class AddCommand extends Command {
      * @param storage The storage used for persistence operations.
      */
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws PloopyException {
         tasks.addTask(task);
         return ui.showAddTask(task, tasks.getSize());
     }
