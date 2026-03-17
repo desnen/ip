@@ -17,126 +17,130 @@ import ploopy.task.ToDo;
  */
 public class Parser {
 
-    public Parser() {
-    }
-
     /**
      * Returns the command object represented by the given full command string.
-     * Throws an exception if the command is unknown or its arguments are invalid.
      *
      * @param fullCommand The user input string.
-     * @return The command object corresponding to the input string.
-     * @throws PloopyException If the input command is unknown or cannot be parsed.
+     * @return The parsed command.
+     * @throws PloopyException If the command is invalid.
      */
     public static Command parse(String fullCommand) throws PloopyException {
+        String trimmed = fullCommand.trim();
+        String[] parts = trimmed.split("\\s+", 2);
+        String commandWord = parts[0];
+        String arguments = parts.length > 1 ? parts[1].trim() : "";
 
-        int len = fullCommand.length();
-
-        if (fullCommand.equals("bye")) {
+        switch (commandWord) {
+        case "bye":
             return new ExitCommand();
-        } else if (fullCommand.equals("list")) {
+        case "list":
             return new ListCommand();
-        } else if (fullCommand.startsWith("mark")) {
-            if (len == 4) {
-                throw new PloopyException("OOPS!!! "
-                        + "The index of mark cannot be empty.");
-            } else {
-                try {
-                    int rep = Integer.parseInt(fullCommand.substring(5)) - 1;
-                    return new MarkCommand(true, rep);
-                } catch (NumberFormatException e) {
-                    throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
-                }
-            }
-        } else if (fullCommand.startsWith("unmark")) {
-            if (len == 6) {
-                throw new PloopyException("OOPS!!! "
-                        + "The index of unmark cannot be empty.");
-            } else {
-                try {
-                    int rep = Integer.parseInt(fullCommand.substring(7)) - 1;
-                    return new MarkCommand(false, rep);
-                } catch (NumberFormatException e) {
-                    throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
-                }
-            }
-        } else if (fullCommand.startsWith("find")) {
-            if (len == 4) {
-                throw new PloopyException("OOPS!!! "
-                        + "The index of find cannot be empty.");
-            } else {
-                try {
-                    String keyword = fullCommand.substring(5);
-                    if (keyword.isBlank()) {
-                        throw new PloopyException("OOPS!!! "
-                                + "The index of find cannot be empty.");
-                    } else {
-                        return new FindCommand(keyword);
-                    }
-                } catch (NumberFormatException e) {
-                    throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
-                }
-            }
-        } else if (fullCommand.startsWith("todo")) {
-            if (len == 4) {
-                throw new PloopyException("OOPS!!! "
-                        + "The description of todo cannot be empty.");
-            } else {
-                String w = fullCommand.substring(5, len);
-                if (w.isBlank()) {
-                    throw new PloopyException("OOPS!!! "
-                            + "The description of todo cannot be empty.");
-                } else {
-                    Task curr = new ToDo(w);
-                    return new AddCommand(curr);
-                }
-            }
-        } else if (fullCommand.startsWith("deadline")) {
-            if (len == 8) {
-                throw new PloopyException("OOPS!!! "
-                        + "The time of deadline cannot be empty.");
-            } else {
-                try {
-                    int targ = fullCommand.indexOf("/", 8);
-                    String w = fullCommand.substring(9, targ - 1);
-                    String time = fullCommand.substring(targ + 4, len);
-                    Task curr = new Deadline(w, time);
-                    return new AddCommand(curr);
-                } catch (StringIndexOutOfBoundsException e) {
-                    throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
-                }
-            }
-        } else if (fullCommand.startsWith("event")) {
-            if (len == 5) {
-                throw new PloopyException("OOPS!!! "
-                        + "The time of event cannot be empty.");
-            } else {
-                try {
-                    int targ = fullCommand.indexOf("/", 5);
-                    int targ2 = fullCommand.indexOf("/", targ + 1);
-                    String w = fullCommand.substring(6, targ - 1);
-                    String time = fullCommand.substring(targ + 6, targ2 - 1);
-                    String time2 = fullCommand.substring(targ2 + 4, len);
-                    Task curr = new Event(w, time, time2);
-                    return new AddCommand(curr);
-                } catch (StringIndexOutOfBoundsException e) {
-                    throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
-                }
-            }
-        } else if (fullCommand.startsWith("delete")) {
-            if (len == 6) {
-                throw new PloopyException("OOPS!!! "
-                        + "The index of delete cannot be empty.");
-            } else {
-                try {
-                    int ny = Integer.parseInt(fullCommand.substring(7, len));
-                    return new DeleteCommand(ny);
-                } catch (NumberFormatException e) {
-                    throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
-                }
-            }
-        } else {
-            throw new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+        case "mark":
+            return parseMark(arguments);
+        case "unmark":
+            return parseUnmark(arguments);
+        case "find":
+            return parseFind(arguments);
+        case "todo":
+            return parseTodo(arguments);
+        case "deadline":
+            return parseDeadline(arguments);
+        case "event":
+            return parseEvent(arguments);
+        case "delete":
+            return parseDelete(arguments);
+        default:
+            throw unknownCommand();
         }
+    }
+
+    private static Command parseMark(String arguments) throws PloopyException {
+        int index = parseIndex(arguments, "The index of mark cannot be empty.");
+        return new MarkCommand(true, index);
+    }
+
+    private static Command parseUnmark(String arguments) throws PloopyException {
+        int index = parseIndex(arguments, "The index of unmark cannot be empty.");
+        return new MarkCommand(false, index);
+    }
+
+    private static Command parseFind(String arguments) throws PloopyException {
+        requireNonBlank(arguments, "The index of find cannot be empty.");
+        return new FindCommand(arguments);
+    }
+
+    private static Command parseTodo(String arguments) throws PloopyException {
+        requireNonBlank(arguments, "The description of todo cannot be empty.");
+        Task task = new ToDo(arguments);
+        return new AddCommand(task);
+    }
+
+    private static Command parseDeadline(String arguments) throws PloopyException {
+        requireNonBlank(arguments, "The time of deadline cannot be empty.");
+
+        int byIndex = arguments.indexOf("/by ");
+        if (byIndex == -1) {
+            throw unknownCommand();
+        }
+
+        String description = arguments.substring(0, byIndex).trim();
+        String by = arguments.substring(byIndex + 4).trim();
+
+        requireNonBlank(description, "The description of deadline cannot be empty.");
+        requireNonBlank(by, "The time of deadline cannot be empty.");
+
+        Task task = new Deadline(description, by);
+        return new AddCommand(task);
+    }
+
+    private static Command parseEvent(String arguments) throws PloopyException {
+        requireNonBlank(arguments, "The time of event cannot be empty.");
+
+        int fromIndex = arguments.indexOf("/from ");
+        int toIndex = arguments.indexOf("/to ");
+
+        if (fromIndex == -1 || toIndex == -1 || fromIndex >= toIndex) {
+            throw unknownCommand();
+        }
+
+        String description = arguments.substring(0, fromIndex).trim();
+        String from = arguments.substring(fromIndex + 6, toIndex).trim();
+        String to = arguments.substring(toIndex + 4).trim();
+
+        requireNonBlank(description, "The description of event cannot be empty.");
+        requireNonBlank(from, "The start time of event cannot be empty.");
+        requireNonBlank(to, "The end time of event cannot be empty.");
+
+        Task task = new Event(description, from, to);
+        return new AddCommand(task);
+    }
+
+    private static Command parseDelete(String arguments) throws PloopyException {
+        requireNonBlank(arguments, "The index of delete cannot be empty.");
+        try {
+            int index = Integer.parseInt(arguments);
+            return new DeleteCommand(index);
+        } catch (NumberFormatException e) {
+            throw unknownCommand();
+        }
+    }
+
+    private static int parseIndex(String arguments, String emptyMessage) throws PloopyException {
+        requireNonBlank(arguments, emptyMessage);
+        try {
+            return Integer.parseInt(arguments) - 1;
+        } catch (NumberFormatException e) {
+            throw unknownCommand();
+        }
+    }
+
+    private static void requireNonBlank(String value, String message) throws PloopyException {
+        if (value == null || value.isBlank()) {
+            throw new PloopyException("OOPS!!! " + message);
+        }
+    }
+
+    private static PloopyException unknownCommand() {
+        return new PloopyException("OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
 }

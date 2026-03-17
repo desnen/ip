@@ -140,18 +140,18 @@ Ploopy confirms the task was added and shows it in the task list.
 
 ## Add a Deadline
 
-Adds a task with a due date/time.
+Adds a task with a due date.
 
 ### Command
 
 ```text
-deadline DESCRIPTION /by DATE_TIME
+deadline DESCRIPTION /by DATE(YYYY-MM-DD)
 ```
 
 ### Example
 
 ```text
-deadline submit project report /by Friday 11:59pm
+deadline submit project report /by 2026-03-01
 ```
 
 ### Expected Result
@@ -167,13 +167,13 @@ Adds a task with a start and end time.
 ### Command
 
 ```text
-event DESCRIPTION /from START_TIME /to END_TIME
+event DESCRIPTION /from START_DATE /to END_DATE
 ```
 
 ### Example
 
 ```text
-event team meeting /from Monday 2pm /to Monday 4pm
+event team meeting /from 2026-03-01 /to 2026-03-02
 ```
 
 ### Expected Result
