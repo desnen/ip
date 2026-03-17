@@ -38,6 +38,7 @@
 .bot-dialog {
     -fx-background-color: #e5e7eb;
     -fx-background-radius: 10px;
+}
 
  .reply-label {
      -fx-background-radius: 1em 1em 1em 0;
