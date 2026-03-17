@@ -7,3 +7,4 @@ T/0/poker
 D/0/cs2103T/2026-02-23
 D/0/submit project report/2026-03-01
 E/0/team meeting/2026-03-01/2026-03-02
+T/0/cs2103 tutorial

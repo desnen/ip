@@ -290,8 +290,6 @@ find report
 
 Ploopy displays the items that match the keyword.
 
-> If your current version of Ploopy does not support `find`, you may remove this section.
-
 ---
 
 ## Exit Ploopy
@@ -312,17 +310,17 @@ Ploopy displays a goodbye message and closes the app shortly after.
 
 ## Command Summary
 
-| Action | Command Format |
-|---|---|
-| Add to-do | `todo DESCRIPTION` |
-| Add deadline | `deadline DESCRIPTION /by DATE_TIME` |
-| Add event | `event DESCRIPTION /from START_TIME /to END_TIME` |
-| List all items | `list` |
-| Mark item as done | `mark INDEX` |
-| Unmark item | `unmark INDEX` |
-| Delete item | `delete INDEX` |
-| Find items *(if supported)* | `find KEYWORD` |
-| Exit app | `bye` |
+| Action | Command Format                                    |
+|---|---------------------------------------------------|
+| Add to-do | `todo DESCRIPTION`                                |
+| Add deadline | `deadline DESCRIPTION /by DATE`                   |
+| Add event | `event DESCRIPTION /from START_DATE /to END_DATE` |
+| List all items | `list`                                            |
+| Mark item as done | `mark INDEX`                                      |
+| Unmark item | `unmark INDEX`                                    |
+| Delete item | `delete INDEX`                                    |
+| Find items | `find KEYWORD`                                    |
+| Exit app | `bye`                                             |
 
 ---
 
@@ -352,8 +350,7 @@ Ploopy will show a goodbye message and then close the application.
 
 ### Are my tasks saved after I close the app?
 
-If your Ploopy version includes storage, tasks will be loaded again on the next launch.  
-If storage is not implemented, tasks may be lost when the app closes.
+Yes, tasks will be loaded again on the next launch.
 
 ---
 
@@ -378,6 +375,7 @@ If storage is not implemented, tasks may be lost when the app closes.
 - Check that required separators are included:
     - `deadline ... /by ...`
     - `event ... /from ... /to ...`
+- Check that your dates are in the correct format(YYYY-MM-DD)
 
 ---
 
